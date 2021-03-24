@@ -1,4 +1,4 @@
-package cafe;
+package cafe.models;
 
 public class MenuItem {
 }

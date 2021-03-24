@@ -1,4 +1,10 @@
-package cafe;
+/**
+ * Coffee GUI MenuItem
+ *
+ * @author Reagan McFarland
+ */
+
+package cafe.models;
 
 public class Coffee extends MenuItem implements Customizable {
     @Override

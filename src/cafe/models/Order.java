@@ -1,6 +1,7 @@
-package cafe;
+package cafe.models;
 
-public class StoreOrders implements Customizable{
+
+public class Order implements Customizable {
 
     @Override
     public boolean add(Object obj) {
@@ -11,4 +12,5 @@ public class StoreOrders implements Customizable{
     public boolean remove(Object obj) {
         return false;
     }
+
 }

@@ -1,4 +1,4 @@
-package cafe;
+package cafe.models;
 
 public interface Customizable {
     boolean add(Object obj);
