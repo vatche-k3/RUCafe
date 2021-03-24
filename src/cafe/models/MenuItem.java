@@ -1,4 +1,6 @@
 package cafe.models;
 
-public class MenuItem {
+abstract class MenuItem {
+
+    public abstract double itemPrice();
 }
