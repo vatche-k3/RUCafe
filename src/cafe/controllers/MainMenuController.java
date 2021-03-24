@@ -1,7 +1,7 @@
 /**
  * Main Menu Controller
  */
-package cafe;
+package cafe.controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
