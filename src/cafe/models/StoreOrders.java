@@ -1,6 +1,6 @@
 package cafe.models;
 
-public class StoreOrders implements Customizable{
+public class StoreOrders implements Customizable {
 
     @Override
     public boolean add(Object obj) {
