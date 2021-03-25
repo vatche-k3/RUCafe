@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
  *
  * @author Reagan McFarland, Vatche Kafafian
  */
-public class CurrentOrderDetailsController{
+public class CurrentOrderDetailsController {
 
     /**
      * Initialize the CurrentOrderDetails Controller. Called behind the scenes by JavaFX

@@ -1,5 +1,7 @@
 package cafe.utils;
 
+import cafe.models.StoreOrders;
+
 /**
  * Global Constants to be used throughout the Project
  * @author Reagan McFarland, Vatche Kafafian

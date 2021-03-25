@@ -1,5 +1,8 @@
 package cafe;
 
+import cafe.models.Coffee;
+import cafe.models.Order;
+import cafe.models.StoreOrders;
 import cafe.utils.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

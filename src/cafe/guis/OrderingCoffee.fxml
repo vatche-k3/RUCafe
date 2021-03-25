@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="cafe.controllers.OrderingCoffeeController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cafe.controllers.OrderingCoffeeController">
+   <children>
+      <TextField layoutX="116.0" layoutY="277.0" />
+      <Label layoutX="116.0" layoutY="250.0" text="Current Price" />
+      <ComboBox layoutX="77.0" layoutY="131.0" prefWidth="150.0" />
+      <Label layoutX="77.0" layoutY="114.0" text="sizes" />
+      <CheckBox layoutX="374.0" layoutY="64.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox layoutX="374.0" layoutY="96.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox layoutX="374.0" layoutY="122.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox layoutX="384.0" layoutY="150.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="80.0" text="CheckBox" />
+      <CheckBox layoutX="384.0" layoutY="191.0" mnemonicParsing="false" text="CheckBox" />
+   </children>
 </AnchorPane>
