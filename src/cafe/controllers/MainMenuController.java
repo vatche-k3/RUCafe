@@ -1,34 +1,43 @@
 package cafe.controllers;
 
-import cafe.models.Coffee;
 import cafe.utils.Constants;
-import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 /**
  * Controller for MainMenu FXML View
  *
  * @author Reagan McFarland, Vatche Kafafian
  */
-public class MainMenuController extends Application {
-
+public class MainMenuController {
     /**
-     * Start the Main Menu GUI
-     * @param primaryStage the primary stage to be shown in the GUI Window
-     * @throws Exception any exceptions that occur
+     * Initialize the controller. Called by JavaFX behind the scenes
      */
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../guis/MainMenu.fxml"));
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-        primaryStage.setTitle(Constants.MAIN_MENU_WINDOW_TITLE);
+    @FXML
+    protected void initialize() {
+        // TODO initialize / do any preprocessing that is necessary
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     * Called whenever "View Current Order Details" button is pressed.
+     * Initializes a new stage and loads the Current Order Details View as a Modal
+     */
+    @FXML
+    public void showCurrentOrderDetails() {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(MainMenuController.class.getResource("../guis/CurrentOrderDetails.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle(Constants.CURRENT_ORDER_DETAILS_WINDOW_TITLE);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (Exception e) {
+            // We will never get here, but required by JVM
+        }
     }
 }

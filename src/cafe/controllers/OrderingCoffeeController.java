@@ -2,27 +2,23 @@ package cafe.controllers;
 
 import cafe.utils.Constants;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Controller for OrderingCofee FXML View
+ * Controller for OrderingCoffee FXML View
  *
  * @author Reagan McFarland, Vatche Kafafian
  */
-public class OrderingCoffeeController extends Application {
+public class OrderingCoffeeController {
     /**
-     * Start the Ordering Coffee GUI
-     * @param primaryStage the primary stage to be shown in the GUI Window
-     * @throws Exception any exceptions that occur
+     * Initialize the OrderingCoffeeController. Called behind the scenes by JavaFX
      */
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../guis/OrderingCoffee.fxml"));
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-        primaryStage.setTitle(Constants.ORDERING_COFFEE_WINDOW_TITLE);
+    @FXML
+    protected void initialize() {
+        // TODO initialize / do any preprocessing that is necessary
     }
 }
