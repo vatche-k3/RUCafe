@@ -1,5 +1,7 @@
 package cafe.models;
 
+import cafe.utils.CoffeeAddin;
+import cafe.utils.CoffeeSize;
 import cafe.utils.Constants;
 import java.util.ArrayList;
 
@@ -11,15 +13,15 @@ import java.util.ArrayList;
 public class Coffee extends MenuItem implements Customizable {
 
     // Private members
-    private final ArrayList<Constants.COFFEE_ADDINS> addins;
-    private Constants.COFFEE_SIZES size;
+    private final ArrayList<CoffeeAddin> addins;
+    private CoffeeSize size;
 
     /**
      * Create new instance of Coffee. size must be set through setSize()
      */
     public Coffee() {
         // Instantiate members
-        addins = new ArrayList<Constants.COFFEE_ADDINS>();
+        addins = new ArrayList<CoffeeAddin>();
         size = null;
     }
 
@@ -27,7 +29,7 @@ public class Coffee extends MenuItem implements Customizable {
      * Set size of Coffee
      * @param newSize new size of the Coffee
      */
-    public void setSize(Constants.COFFEE_SIZES newSize) {
+    public void setSize(CoffeeSize newSize) {
         this.size = newSize;
     }
 
@@ -39,11 +41,11 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean add(Object obj) {
-        if (obj instanceof Constants.COFFEE_ADDINS) {
-            Constants.COFFEE_ADDINS newAddinIn = (Constants.COFFEE_ADDINS) obj;
+        if (obj instanceof CoffeeAddin) {
+            CoffeeAddin newAddinIn = (CoffeeAddin) obj;
             // Make sure addin is not already in the list
             boolean addinAlreadyPresent = false;
-            for(Constants.COFFEE_ADDINS addin : this.addins) {
+            for(CoffeeAddin addin : this.addins) {
                 if(addin == newAddinIn) {
                     addinAlreadyPresent = true;
                     break;
@@ -70,8 +72,8 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean remove(Object obj) {
-        if (obj instanceof Constants.COFFEE_ADDINS) {
-            Constants.COFFEE_ADDINS newAddinIn = (Constants.COFFEE_ADDINS) obj;
+        if (obj instanceof CoffeeAddin) {
+            CoffeeAddin newAddinIn = (CoffeeAddin) obj;
             // Collections.remove returns true if the list was changed, i.e., it was actually in the list
             return this.addins.remove(newAddinIn);
         } else {
