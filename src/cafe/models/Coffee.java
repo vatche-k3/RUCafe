@@ -17,11 +17,11 @@ public class Coffee extends MenuItem implements Customizable {
     private CoffeeSize size;
 
     /**
-     * Create new instance of Coffee. size must be set through setSize()
+     * Create new instance of Coffee
      */
     public Coffee() {
         // Instantiate members
-        addins = new ArrayList<CoffeeAddin>();
+        addins = null;
         size = null;
     }
 

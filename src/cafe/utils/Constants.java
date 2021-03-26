@@ -18,6 +18,7 @@ public class Constants {
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;
     public static final double DONUT_TYPE_CAKE_PRICE = 1.59;
     public static final double DONUT_TYPE_HOLE_PRICE = 0.33;
+    public static final String DONUT_STRING_DELIMITER = ":";
 
     // Coffee specific constants
     public static final double COFFEE_ADDIN_COST = 0.2;

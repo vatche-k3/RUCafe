@@ -1,47 +1,85 @@
 package cafe.models;
 
+import cafe.utils.Constants;
 import cafe.utils.DonutFlavor;
+import cafe.utils.DonutType;
 
 /**
  * Donut MenuItem
  *
  * @author Reagan McFarland
  */
-public class Donut extends MenuItem implements Customizable {
+public class Donut extends MenuItem {
 
     // Private members
-    private DonutFlavor type;
+    private DonutType type;
     private DonutFlavor flavor;
+    private int quantity;
 
     /**
-     * Create new instance of Donut. type must be set through setType()
+     * Create new instance of Donut.
      */
-    public Donut() {
-        type = null;
-        flavor = null;
+    public Donut(DonutType type, DonutFlavor flavor, int quantity) {
+        this.type = type;
+        this.flavor = flavor;
+        this.quantity = quantity;
     }
 
     /**
-     * Set type of Donut
-     * @param newType new type of the Donut
+     * Get the type of the donut
+     * @return type of the donut
      */
-    public void setType(DonutFlavor newType) { this.type = newType;}
+    public DonutType getType() {
+        return this.type;
+    }
 
     /**
-     * Add a new DonutFlavors to the Donut
-     * @param obj
+     * Get the flavor of the donut
+     * @return flavor of the donut
+     */
+    public DonutFlavor getFlavor() {
+        return this.flavor;
+    }
+
+    /**
+     * Get the quantity of donuts we are ordering
+     * @return quantity we are ordering of the donut
+     */
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    /**
+     * Set the quantity of donuts in the order line item
+     * @param newQuantity the new quantity of donuts for the line item
+     */
+    public void updateQuantity(int newQuantity) {
+        this.quantity = newQuantity;
+    }
+
+    /**
+     * Get a string representation of the donut order.
+     * Follows the format
+     *      "DonutType:DonutFlavor:(quantity)"
+     * @return string representation following the format above
+     */
+    @Override
+    public String toString() {
+        String ret = "";
+
+        // Append donut type and flavor
+        ret += this.getType() + Constants.DONUT_STRING_DELIMITER + this.getFlavor();
+
+        // Append quantity
+        ret += Constants.DONUT_STRING_DELIMITER + "(" + this.quantity + ")";
+
+        return ret;
+    }
+
+    /**
+     *
      * @return
      */
-    @Override
-    public boolean add(Object obj) {
-        return false;
-    }
-
-    @Override
-    public boolean remove(Object obj) {
-        return false;
-    }
-
     @Override
     public double itemPrice() {
         return 0;

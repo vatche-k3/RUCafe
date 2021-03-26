@@ -1,6 +1,5 @@
 package cafe.models;
 
-
 import java.util.ArrayList;
 
 public class Order implements Customizable {
