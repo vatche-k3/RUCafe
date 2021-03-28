@@ -7,6 +7,8 @@ import cafe.models.StoreOrders;
  * @author Reagan McFarland, Vatche Kafafian
  */
 public class Constants {
+    public static final String CURRENCY_FORMAT_STRING = "$%,.2f";
+
     // Window titles
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
     public static final String CURRENT_ORDER_DETAILS_WINDOW_TITLE = "Current Order Details";

@@ -21,7 +21,7 @@ public class Coffee extends MenuItem implements Customizable {
      */
     public Coffee() {
         // Instantiate members
-        addins = null;
+        addins = new ArrayList<>();
         size = null;
     }
 
