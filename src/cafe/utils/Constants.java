@@ -8,6 +8,8 @@ import cafe.models.StoreOrders;
  */
 public class Constants {
     public static final String CURRENCY_FORMAT_STRING = "$%,.2f";
+    public static final char SPACE_CHARACTER = ' ';
+    public static final char ENUM_SPACE_REPLACEMENT_CHARACTER = '_';
 
     // Window titles
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
@@ -23,6 +25,8 @@ public class Constants {
     public static final String DONUT_STRING_DELIMITER = ":";
 
     // Coffee specific constants
+    public static final int MAX_UNIQUE_ADDIN_COUNT = 5; // ex: maximum of 5 creams
+    public static final int COFFEE_ADDIN_SPINNER_MIN_VALUE = 1; // lowest integer value the addin spinners can go to
     public static final double COFFEE_ADDIN_COST = 0.2;
     public static final double COFFEE_BASE_PRICE = 1.99;
     public static final double COFFEE_SIZE_SHORT_PRICE = COFFEE_BASE_PRICE;

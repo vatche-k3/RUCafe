@@ -37,25 +37,27 @@ public class Coffee extends MenuItem implements Customizable {
      * Add a new Constants.COFFEE_ADDINS to the Coffee.
      * Note: Attempts to cast object to an Constants.COFFEE_ADDINS type, so you don't have to do type checking beforehand
      * @param obj Addin we are adding to our coffee.
-     * @return Whether or not obj was a valid COFFEE_ADDIN and it was successfully appended to the list
+     * @return Whether or not obj was a valid COFFEE_ADDIN and it was successfully appended to the list.
+     *         Note that it will not add an addin if there is Constants.MAX_UNIQUE_ADDIN already present for the addin in the addin list
      */
     @Override
     public boolean add(Object obj) {
         if (obj instanceof CoffeeAddin) {
             CoffeeAddin newAddinIn = (CoffeeAddin) obj;
-            // Make sure addin is not already in the list
-            boolean addinAlreadyPresent = false;
+
+            // Make sure we aren't adding more than MAX_UNIQUE_ADDIN to the addin list
+            int currentAddinCount = 0;
             for(CoffeeAddin addin : this.addins) {
                 if(addin == newAddinIn) {
-                    addinAlreadyPresent = true;
-                    break;
+                    currentAddinCount++;
                 }
             }
-            if(addinAlreadyPresent) {
+
+            // If we are already at max, return false
+            if(currentAddinCount == Constants.MAX_UNIQUE_ADDIN_COUNT) {
                 return false;
             } else {
-                this.addins.add(newAddinIn);
-                return true;
+                return this.addins.add(newAddinIn);
             }
         } else {
             //DEBUG

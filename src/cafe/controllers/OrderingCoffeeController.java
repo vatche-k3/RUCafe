@@ -2,15 +2,17 @@ package cafe.controllers;
 
 import cafe.models.Coffee;
 import cafe.models.Order;
+import cafe.utils.CoffeeAddin;
 import cafe.utils.CoffeeSize;
 import cafe.utils.Constants;
 import javafx.beans.binding.Binding;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.Locale;
 
 
 /**
@@ -24,6 +26,17 @@ public class OrderingCoffeeController {
     @FXML private Button addToOrderButton;
     @FXML private TextField currentPrice;
     @FXML private ComboBox<CoffeeSize> coffeeSizesComboBox;
+    @FXML private CheckBox creamCheckbox;
+    @FXML private Spinner<Integer> creamQuantity;
+    @FXML private CheckBox milkCheckbox;
+    @FXML private Spinner<Integer> milkQuantity;
+    @FXML private CheckBox whippedCreamCheckbox;
+    @FXML private Spinner<Integer> whippedCreamQuantity;
+    @FXML private CheckBox syrupCheckbox;
+    @FXML private Spinner<Integer> syrupQuantity;
+    @FXML private CheckBox caramelCheckbox;
+    @FXML private Spinner<Integer> caramelQuantity;
+
 
     // Our current coffee order object
     private Coffee currentCoffee;
@@ -38,8 +51,79 @@ public class OrderingCoffeeController {
         // Popualate combobox with sizes
         coffeeSizesComboBox.setItems(FXCollections.observableArrayList(CoffeeSize.values()));
 
+        // Set default selection to SHORT
+        coffeeSizesComboBox.getSelectionModel().select(CoffeeSize.SHORT);
+        currentCoffee.setSize(CoffeeSize.SHORT);
+
+        // cream quantity on value change listener
+        creamQuantity.valueProperty().addListener((obs, oldValue, newValue) -> {
+            // Check if it the event was an increment or decrement
+            if(newValue > oldValue) {
+                currentCoffee.add(CoffeeAddin.CREAM);
+            } else {
+                currentCoffee.remove(CoffeeAddin.CREAM);
+            }
+            // Refresh dynamic price
+            recomputeItemPrice();
+        });
+
+        // milk quantity on value change listener
+        milkQuantity.valueProperty().addListener((obs, oldValue, newValue) -> {
+            // Check if it the event was an increment or decrement
+            if(newValue > oldValue) {
+                currentCoffee.add(CoffeeAddin.MILK);
+            } else {
+                currentCoffee.remove(CoffeeAddin.MILK);
+            }
+            // Refresh dynamic price
+            recomputeItemPrice();
+        });
+
+        // whipped cream quantity on value change listener
+        whippedCreamQuantity.valueProperty().addListener((obs, oldValue, newValue) -> {
+            // Check if it the event was an increment or decrement
+            if(newValue > oldValue) {
+                currentCoffee.add(CoffeeAddin.WHIPPED_CREAM);
+            } else {
+                currentCoffee.remove(CoffeeAddin.WHIPPED_CREAM);
+            }
+            // Refresh dynamic price
+            recomputeItemPrice();
+        });
+
+        // syrup quantity on value change listener
+        syrupQuantity.valueProperty().addListener((obs, oldValue, newValue) -> {
+            // Check if it the event was an increment or decrement
+            if(newValue > oldValue) {
+                currentCoffee.add(CoffeeAddin.SYRUP);
+            } else {
+                currentCoffee.remove(CoffeeAddin.SYRUP);
+            }
+            // Refresh dynamic price
+            recomputeItemPrice();
+        });
+
+        // caramel quantity on value change listener
+        caramelQuantity.valueProperty().addListener((obs, oldValue, newValue) -> {
+            // Check if it the event was an increment or decrement
+            if(newValue > oldValue) {
+                currentCoffee.add(CoffeeAddin.CARAMEL);
+            } else {
+                currentCoffee.remove(CoffeeAddin.CARAMEL);
+            }
+            // Refresh dynamic price
+            recomputeItemPrice();
+        });
+
         // Bind add to order button to be disabled unless a size is selected in the combobox
         addToOrderButton.disableProperty().bind(coffeeSizesComboBox.valueProperty().isNull());
+
+        // Bind spinner's for each addin to be disabled unless the relevant checkbox is selected
+        creamQuantity.disableProperty().bind(creamCheckbox.selectedProperty().not());
+        milkQuantity.disableProperty().bind(milkCheckbox.selectedProperty().not());
+        whippedCreamQuantity.disableProperty().bind(whippedCreamCheckbox.selectedProperty().not());
+        syrupQuantity.disableProperty().bind(syrupCheckbox.selectedProperty().not());
+        caramelQuantity.disableProperty().bind(caramelCheckbox.selectedProperty().not());
 
         // recompute dynamic item price on initialization
         recomputeItemPrice();
@@ -54,6 +138,51 @@ public class OrderingCoffeeController {
         this.currentCoffee.setSize(coffeeSizesComboBox.getValue());
         // Recompute dynamic item price field
         recomputeItemPrice();
+    }
+
+    /**
+     * Handler for addin checkbox selected
+     * @param e ActionEvent that triggered the handler
+     */
+    @FXML
+    void addinCheckedHandler(ActionEvent e) {
+        // Ensure that it was a checkbox that triggered the event, and cast source to CheckBox object
+        if(e.getSource() instanceof CheckBox) {
+            // Cast text of the checkbox to a coffee addin
+            CheckBox sourceCheckBox = (CheckBox) e.getSource();
+            // Cast to CoffeeAddin, making sure to replace all spaces with "_" so that it matches correctly
+            CoffeeAddin addin = CoffeeAddin.valueOf(sourceCheckBox.getText().toUpperCase().replace(Constants.SPACE_CHARACTER, Constants.ENUM_SPACE_REPLACEMENT_CHARACTER));
+            // This event gets called whenever it checks or gets unchecked, so we need to determine if we need to add the addin, or remove it
+            if(sourceCheckBox.isSelected()) {
+                // If we are selecting the checbox, add addin to coffee
+                currentCoffee.add(addin);
+            } else {
+                // We need to remove all addins from the coffee object that match the newAddin
+                while(currentCoffee.remove(addin));
+
+                // We also need to reset the corresponding spinner back to 1
+                switch(addin) {
+                    case CREAM:
+                        creamQuantity.getValueFactory().setValue(Constants.COFFEE_ADDIN_SPINNER_MIN_VALUE);
+                        break;
+                    case MILK:
+                        milkQuantity.getValueFactory().setValue(Constants.COFFEE_ADDIN_SPINNER_MIN_VALUE);
+                        break;
+                    case WHIPPED_CREAM:
+                        whippedCreamQuantity.getValueFactory().setValue(Constants.COFFEE_ADDIN_SPINNER_MIN_VALUE);
+                        break;
+                    case SYRUP:
+                        syrupQuantity.getValueFactory().setValue(Constants.COFFEE_ADDIN_SPINNER_MIN_VALUE);
+                        break;
+                    case CARAMEL:
+                        caramelQuantity.getValueFactory().setValue(Constants.COFFEE_ADDIN_SPINNER_MIN_VALUE);
+                        break;
+                }
+            }
+
+            // recompute dynamic price
+            recomputeItemPrice();
+        }
     }
 
     /**
