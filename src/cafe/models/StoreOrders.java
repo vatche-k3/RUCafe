@@ -2,14 +2,32 @@ package cafe.models;
 
 import java.util.ArrayList;
 
+/**
+ * All the orders for the store. This class follows the singleton design pattern as we really want one shared instance
+ * to be shared across the project from multiple controllers as easy as possible. This abstraction proves to be very effective in our particular case.
+ *
+ * @author Reagan McFarland, Vatche Kafafian
+ */
 public class StoreOrders implements Customizable {
 
+    // All orders
     ArrayList<Order> orders;
 
+    // Singleton setup
     private static StoreOrders instance = null;
+
+    /**
+     * The only constructor, the private no argument constructor, can only be called from this class (through getInstance)
+     *
+     */
     private StoreOrders() {
         this.orders = new ArrayList<>();
     }
+
+    /**
+     * Retrieve the current store orders instance. If one does not exist, it is created.
+     * @return Current Store Orders shared instance
+     */
     public static StoreOrders getInstance() {
         if(instance == null)
             instance = new StoreOrders();
