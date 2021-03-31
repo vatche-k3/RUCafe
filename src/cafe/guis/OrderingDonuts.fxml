@@ -12,7 +12,7 @@
       <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordering Donuts" />
       <Group layoutX="-42.0" layoutY="129.0">
          <children>
-            <Accordion layoutX="101.0" prefHeight="180.0" prefWidth="202.0">
+            <Accordion layoutX="101.0" prefHeight="184.0" prefWidth="202.0">
               <panes>
                 <TitledPane fx:id="yeastDonutTitledPane" animated="false" prefHeight="100.0" prefWidth="200.0" text="Yeast Donut">
                   <content>
@@ -32,11 +32,11 @@
                         </AnchorPane>
                   </content>
                 </TitledPane>
-                <TitledPane fx:id="holeDonutTitledPane" animated="false" prefHeight="128.0" prefWidth="202.0" text="Donut Holes">
+                <TitledPane fx:id="holeDonutTitledPane" animated="false" prefHeight="119.0" prefWidth="202.0" text="Donut Holes">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="holeDonutListView" prefHeight="104.0" prefWidth="200.0" />
+                              <ListView fx:id="holeDonutListView" prefHeight="100.0" prefWidth="200.0" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -63,7 +63,7 @@
          <children>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" text="Add To Order" />
+                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Add To Order" />
                </children>
             </HBox>
          </children>

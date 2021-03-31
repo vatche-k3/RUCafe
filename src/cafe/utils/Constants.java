@@ -20,6 +20,9 @@ public class Constants {
     public static final int WINDOW_WIDTH = 500;
     public static final int WINDOW_HEIGHT = 500;
 
+    // Alert messages
+    public static final String SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG = "Successfully added the item to the order.";
+
     // Donut specific constants
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;
     public static final double DONUT_TYPE_CAKE_PRICE = 1.59;

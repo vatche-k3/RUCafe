@@ -7,7 +7,7 @@ import cafe.utils.DonutType;
 /**
  * Donut MenuItem
  *
- * @author Reagan McFarland
+ * @author Reagan McFarland, Vatche Kafafian
  */
 public class Donut extends MenuItem {
 
@@ -80,13 +80,10 @@ public class Donut extends MenuItem {
     @Override
     public String toString() {
         String ret = "";
-
         // Append donut type and flavor
         ret += this.getType() + Constants.DONUT_STRING_DELIMITER + this.getFlavor();
-
         // Append quantity
         ret += Constants.DONUT_STRING_DELIMITER + "(" + this.quantity + ")";
-
         return ret;
     }
 

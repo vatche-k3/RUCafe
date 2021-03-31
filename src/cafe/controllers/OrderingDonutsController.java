@@ -1,6 +1,7 @@
 package cafe.controllers;
 
 import cafe.models.Donut;
+import cafe.models.Order;
 import cafe.utils.Constants;
 import cafe.utils.DonutFlavor;
 import cafe.utils.DonutType;
@@ -15,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -148,10 +150,12 @@ public class OrderingDonutsController {
      * Recompute subtotal price for the cart
      */
     void recomputePrice() {
+        // Add up the price of the order
         double totalPrice = 0;
         for(Donut d : donutsInCart) {
             totalPrice += d.itemPrice();
         }
+        // Update text field with curreny format with 2 decimals
         currentPriceTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, totalPrice));
     }
 
@@ -202,5 +206,25 @@ public class OrderingDonutsController {
         donutCartListView.setItems(FXCollections.observableArrayList(this.donutsInCart));
         clearSelections();
         recomputePrice();
+    }
+
+    /**
+     * Add the current cart to the current shared order. Triggered by the Add to Order button.
+     */
+    @FXML
+    void addToOrder() {
+        // Add all donuts
+        for(Donut donut : this.donutsInCart) {
+            Order.getInstance().add(donut);
+        }
+
+        // Show alert
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(Constants.SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG);
+        alert.show();
+
+        // Close modal
+        Stage stage = (Stage) this.donutCartListView.getScene().getWindow();
+        stage.close();
     }
 }
