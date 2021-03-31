@@ -5,15 +5,12 @@ import cafe.models.Order;
 import cafe.utils.CoffeeAddin;
 import cafe.utils.CoffeeSize;
 import cafe.utils.Constants;
-import javafx.beans.binding.Binding;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.util.Locale;
 
 
 /**
