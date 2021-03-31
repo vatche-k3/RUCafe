@@ -24,16 +24,6 @@ public class StoreOrders implements Customizable {
         // Open the file dialog, and write orders
     }
 
-    public void test() {
-        for(Order order : this.orders) {
-            System.out.println("new order");
-            for(MenuItem mItem : order.itemsInOrder) {
-                System.out.println("\t" + mItem.itemPrice());
-            }
-        }
-    }
-
-
     @Override
     public boolean add(Object obj) {
         if(obj instanceof Order) {

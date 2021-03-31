@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Order implements Customizable {
 
     // The items in the current order
-    ArrayList<MenuItem> itemsInOrder;
+    private final ArrayList<MenuItem> itemsInOrder;
 
     // Singleton setup
     private static Order instance;
@@ -41,6 +41,14 @@ public class Order implements Customizable {
         // Add to store orders and reset instance
         StoreOrders.getInstance().add(this);
         instance = null;
+    }
+
+    /**
+     * Get items in order
+     * @return items in order
+     */
+    public ArrayList<MenuItem> getItemsInOrder() {
+        return this.itemsInOrder;
     }
 
     /**

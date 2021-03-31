@@ -1,5 +1,7 @@
 package cafe.controllers;
 
+import cafe.models.Order;
+import cafe.models.MenuItem;
 import javafx.fxml.FXML;
 
 /**
@@ -9,11 +11,18 @@ import javafx.fxml.FXML;
  */
 public class CurrentOrderDetailsController {
 
+    private Order currentOrder;
+
     /**
      * Initialize the CurrentOrderDetails Controller. Called behind the scenes by JavaFX
      */
     @FXML
     protected void initialize() {
-        // TODO initialize / do any preprocessing that is necessary
+        // bind current order instance to local var
+        currentOrder = Order.getInstance();
+
+        for(MenuItem item : this.currentOrder.getItemsInOrder()) {
+            System.out.println(item.toString());
+        }
     }
 }

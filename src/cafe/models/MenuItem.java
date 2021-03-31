@@ -5,6 +5,6 @@ package cafe.models;
  *
  * @author Regan McFarland, Vatche Kafafian
  */
-abstract class MenuItem {
+public abstract class MenuItem {
     public abstract double itemPrice();
 }
