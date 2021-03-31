@@ -11,12 +11,14 @@ public class Constants {
     public static final char SPACE_CHARACTER = ' ';
     public static final char ENUM_SPACE_REPLACEMENT_CHARACTER = '_';
 
-    // Window titles
+    // Window constants
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
     public static final String CURRENT_ORDER_DETAILS_WINDOW_TITLE = "Current Order Details";
     public static final String ORDERING_COFFEE_WINDOW_TITLE = "New Cofee Order";
     public static final String ORDERING_DONUTS_WINDOW_TITLE = "New Donut Order";
     public static final String ORDERS_PAGE_WINDOW_TITLE = "Past Orders";
+    public static final int WINDOW_WIDTH = 500;
+    public static final int WINDOW_HEIGHT = 500;
 
     // Donut specific constants
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;

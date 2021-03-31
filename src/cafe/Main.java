@@ -20,9 +20,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("./guis/MainMenu.fxml"));
-        primaryStage.setScene(new Scene(root, 500, 600));
+        primaryStage.setScene(new Scene(root, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT));
         primaryStage.show();
         primaryStage.setTitle(Constants.MAIN_MENU_WINDOW_TITLE);
+        primaryStage.setResizable(false);
     }
 
     /**

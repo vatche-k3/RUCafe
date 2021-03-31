@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 /**
  * Controller for MainMenu FXML View
@@ -33,6 +32,7 @@ public class MainMenuController {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(MainMenuController.class.getResource("../guis/CurrentOrderDetails.fxml"));
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle(Constants.CURRENT_ORDER_DETAILS_WINDOW_TITLE);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
@@ -51,6 +51,7 @@ public class MainMenuController {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(MainMenuController.class.getResource("../guis/OrderingCoffee.fxml"));
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle(Constants.ORDERING_COFFEE_WINDOW_TITLE);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
@@ -69,6 +70,7 @@ public class MainMenuController {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(MainMenuController.class.getResource("../guis/OrderingDonuts.fxml"));
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle(Constants.ORDERING_DONUTS_WINDOW_TITLE);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
@@ -87,6 +89,7 @@ public class MainMenuController {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(MainMenuController.class.getResource("../guis/OrdersPage.fxml"));
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.setTitle(Constants.ORDERS_PAGE_WINDOW_TITLE);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
