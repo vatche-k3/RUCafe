@@ -91,11 +91,14 @@ public class Donut extends MenuItem {
     }
 
     /**
-     *
-     * @return
+     * Calculate the price of the donut based on the type, flavor, and quantity
+     * @return price of the donut
      */
     @Override
     public double itemPrice() {
-        return 0;
+        // Calculate base cost (type)
+        double baseCost = this.getType().getCost();
+        // Multiply by quantity and return
+        return baseCost * this.getQuantity();
     }
 }

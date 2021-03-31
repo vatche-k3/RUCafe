@@ -1,6 +1,7 @@
 package cafe.controllers;
 
 import cafe.models.Donut;
+import cafe.utils.Constants;
 import cafe.utils.DonutFlavor;
 import cafe.utils.DonutType;
 import javafx.beans.binding.Bindings;
@@ -24,36 +25,39 @@ import java.util.ArrayList;
  */
 public class OrderingDonutsController {
 
+    // Constants
+    private static final int MIN_DONUT_QUANTITY_SPINNER_VALUE = 1;
+    private static final int MAX_DONUT_QUANTITY_SPINNER_VALUE = 100;
+    private static final int DEFAULT_DONUT_QUANTITY_SPINNER_VALUE = MIN_DONUT_QUANTITY_SPINNER_VALUE;
+    // All the donuts in our cart
+    ArrayList<Donut> donutsInCart;
+    // Currently selected properties
+    SimpleObjectProperty<DonutType> currentlySelectedType;
+    SimpleObjectProperty<DonutFlavor> currentlySelectedFlavor;
+    SimpleObjectProperty<Donut> currentlySelectedDonutInCart;
     // FXML references
     @FXML private ListView<DonutFlavor> yeastDonutListView;
     @FXML private ListView<DonutFlavor> cakeDonutListView;
     @FXML private ListView<DonutFlavor> holeDonutListView;
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private Button addDonutSelectionToCartButton;
+    @FXML private Button removeDonutSelectionFromCartButton;
     @FXML private ListView<Donut> donutCartListView;
     @FXML private TitledPane yeastDonutTitledPane;
     @FXML private TitledPane cakeDonutTitledPane;
     @FXML private TitledPane holeDonutTitledPane;
-
-    // Constants
-    private static final int MIN_DONUT_QUANTITY_SPINNER_VALUE = 1;
-    private static final int MAX_DONUT_QUANTITY_SPINNER_VALUE = 100;
-    private static final int DEFAULT_DONUT_QUANTITY_SPINNER_VALUE = MIN_DONUT_QUANTITY_SPINNER_VALUE;
-
-    // All the donuts in our cart
-    ArrayList<Donut> donutsInCart;
-    // Currently selected properties
-    SimpleObjectProperty<DonutType> currentlySelectedType;
-    SimpleObjectProperty<DonutFlavor> currentlySelectedFlavor;
+    @FXML private TextField currentPriceTextField;
 
     /**
      * Initialize the OrderingDonutsController. Called behind the scenes by JavaFX
      */
     @FXML
     protected void initialize() {
+        // Instantiate members
         donutsInCart = new ArrayList<>();
         currentlySelectedType = new SimpleObjectProperty<>();
         currentlySelectedFlavor = new SimpleObjectProperty<>();
+        currentlySelectedDonutInCart = new SimpleObjectProperty<>();
 
         // populate list views
         yeastDonutListView.setItems(FXCollections.observableArrayList(DonutFlavor.values()));
@@ -103,12 +107,23 @@ public class OrderingDonutsController {
             cakeDonutListView.getSelectionModel().clearSelection();
         });
 
+        // On select listener for cart
+        donutCartListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // if we are unselecting (i.e., newValue is null) then we don't do anything
+            this.currentlySelectedDonutInCart.setValue(newValue);
+        });
+
         // Add donut selection to cart should be disabled unless the flavor and type are selected
         addDonutSelectionToCartButton.disableProperty().bind(
             Bindings.and(
                 this.currentlySelectedType.isNotNull(),
                 this.currentlySelectedFlavor.isNotNull()
             ).not()
+        );
+
+        // Remove donut selection from cart should be disabled unless an item in the cart is selected
+        removeDonutSelectionFromCartButton.disableProperty().bind(
+                this.currentlySelectedDonutInCart.isNull()
         );
 
     }
@@ -127,6 +142,29 @@ public class OrderingDonutsController {
         cakeDonutListView.getSelectionModel().clearSelection();
         holeDonutListView.getSelectionModel().clearSelection();
         donutCartListView.getSelectionModel().clearSelection();
+    }
+
+    /**
+     * Recompute subtotal price for the cart
+     */
+    void recomputePrice() {
+        double totalPrice = 0;
+        for(Donut d : donutsInCart) {
+            totalPrice += d.itemPrice();
+        }
+        currentPriceTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, totalPrice));
+    }
+
+    /**
+     * Triggered whenever the removeDonutSelectionFromCart button is pressed
+     */
+    @FXML
+    void removeDonutSelectionFromCart() {
+        this.donutsInCart.remove(this.currentlySelectedDonutInCart.getValue());
+        // Update UI
+        donutCartListView.setItems(FXCollections.observableArrayList(this.donutsInCart));
+        clearSelections();
+        recomputePrice();
     }
 
     /**
@@ -156,8 +194,13 @@ public class OrderingDonutsController {
             matchingDonut.updateQuantity(matchingDonut.getQuantity() + newDonut.getQuantity());
         }
 
+        // clear current selection
+        this.currentlySelectedType.setValue(null);
+        this.currentlySelectedFlavor.setValue(null);
+
         // Update UI
         donutCartListView.setItems(FXCollections.observableArrayList(this.donutsInCart));
         clearSelections();
+        recomputePrice();
     }
 }

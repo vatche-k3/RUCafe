@@ -47,14 +47,14 @@
       </Group>
       <Group layoutX="202.0" layoutY="324.0">
          <children>
-            <HBox>
+            <HBox layoutX="-31.0">
                <children>
-                  <Label text="Sub-Total">
+                  <Label text="Curent Price">
                      <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets right="10.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="currentPriceTextField" editable="false" />
                </children>
             </HBox>
          </children>
@@ -90,7 +90,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Remove">
+                  <Button fx:id="removeDonutSelectionFromCartButton" mnemonicParsing="false" onAction="#removeDonutSelectionFromCart" text="Remove">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
