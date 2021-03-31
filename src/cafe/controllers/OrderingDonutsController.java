@@ -113,6 +113,7 @@ public class OrderingDonutsController {
 
         // On select listener for cart
         donutCartListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // if we are unselecting (i.e., newValue is null) then we don't do anything
             this.currentlySelectedDonutInCart.setValue(newValue);
         });
 

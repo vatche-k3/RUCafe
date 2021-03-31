@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.util.Locale;
 
@@ -36,6 +37,7 @@ public class OrderingCoffeeController {
     @FXML private Spinner<Integer> syrupQuantity;
     @FXML private CheckBox caramelCheckbox;
     @FXML private Spinner<Integer> caramelQuantity;
+    @FXML private Spinner<Integer> quantitySpinner;
 
 
     // Our current coffee order object
@@ -115,6 +117,12 @@ public class OrderingCoffeeController {
             recomputeItemPrice();
         });
 
+        // on value change for spinner should update coffee's quantity and recomputePrice
+        quantitySpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+            this.currentCoffee.updateQuantity(newValue);
+            recomputeItemPrice();
+        });
+
         // Bind add to order button to be disabled unless a size is selected in the combobox
         addToOrderButton.disableProperty().bind(coffeeSizesComboBox.valueProperty().isNull());
 
@@ -191,7 +199,7 @@ public class OrderingCoffeeController {
     void recomputeItemPrice() {
         double newPrice = 0;
         try {
-            newPrice = currentCoffee.itemPrice();
+            newPrice = currentCoffee.itemPrice() * currentCoffee.getQuantity();
         } catch (IllegalStateException e) {
             // We haven't selected size yet, so price is zero because we don't know what size we are dealing with yet
             newPrice = 0.0;
@@ -205,8 +213,17 @@ public class OrderingCoffeeController {
      */
     @FXML
     protected void addCoffeeToOrder() {
-        // TODO have button call this function
+        // Add to order
         Order.getInstance().add(currentCoffee);
+
+        // Show alert
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(Constants.SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG);
+        alert.show();
+
+        // Close modal
+        Stage stage = (Stage) this.currentPrice.getScene().getWindow();
+        stage.close();
     }
 
 
