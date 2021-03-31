@@ -14,7 +14,7 @@ public class Constants {
     // Window constants
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
     public static final String CURRENT_ORDER_DETAILS_WINDOW_TITLE = "Current Order Details";
-    public static final String ORDERING_COFFEE_WINDOW_TITLE = "New Cofee Order";
+    public static final String ORDERING_COFFEE_WINDOW_TITLE = "New Coffee Order";
     public static final String ORDERING_DONUTS_WINDOW_TITLE = "New Donut Order";
     public static final String ORDERS_PAGE_WINDOW_TITLE = "Past Orders";
     public static final int WINDOW_WIDTH = 500;

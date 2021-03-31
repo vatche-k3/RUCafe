@@ -10,5 +10,5 @@ public enum CoffeeAddin {
     SYRUP,
     MILK,
     CARAMEL,
-    WHIPPED_CREAM;
+    WHIPPED_CREAM
 }

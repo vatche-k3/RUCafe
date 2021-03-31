@@ -45,7 +45,7 @@ public class Donut extends MenuItem {
     }
 
     /**
-     * Compare 2 donuts against eachother based on type and flavor
+     * Compare 2 donuts against each other based on type and flavor
      *
      * @param obj Donut to compare against
      * @return whether or not the donuts have the same type and flavor

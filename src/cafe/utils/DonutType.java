@@ -21,7 +21,7 @@ public enum DonutType {
 
     /**
      * Get the base cost of a donut by its type
-     * @return base cost of a dunut by its type
+     * @return base cost of a donut by its type
      */
     public double getCost() { return this.cost; }
 

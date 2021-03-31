@@ -151,7 +151,7 @@ public class OrderingDonutsController {
         for(Donut d : donutsInCart) {
             totalPrice += d.itemPrice();
         }
-        // Update text field with curreny format with 2 decimals
+        // Update text field with currency format with 2 decimals
         currentPriceTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, totalPrice));
     }
 
@@ -178,7 +178,7 @@ public class OrderingDonutsController {
             this.currentlySelectedFlavor.getValue(),
             this.quantitySpinner.getValue()
         );
-        // We need to defragment donuts that are of the same type and flavor
+        // We need to defrag donuts that are of the same type and flavor
         Donut matchingDonut = null;
         for(Donut donut : this.donutsInCart) {
             if(donut.equals(newDonut)) {

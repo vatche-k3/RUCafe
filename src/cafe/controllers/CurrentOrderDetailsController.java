@@ -2,7 +2,6 @@ package cafe.controllers;
 
 import cafe.models.Order;
 import cafe.models.MenuItem;
-import cafe.models.StoreOrders;
 import cafe.utils.Constants;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -42,9 +41,7 @@ public class CurrentOrderDetailsController {
         currentOrder = Order.getInstance();
 
         // on select listener for menu item in the current order list view
-        currentOrderListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            currentlySelectedItem.setValue(newValue);
-        });
+        currentOrderListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> currentlySelectedItem.setValue(newValue));
 
         // Remove Selected item should be disabled unless currently selected item is not null
         removeSelectedItemButton.disableProperty().bind(this.currentlySelectedItem.isNull());
@@ -109,7 +106,7 @@ public class CurrentOrderDetailsController {
 
         // calc sales tax
         double salesTax = subTotal * Constants.SALES_TAX_RATE;
-        // Update salestax formatted as currency
+        // Update sales tax formatted as currency
         this.salesTaxTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, salesTax));
 
         // Calc total

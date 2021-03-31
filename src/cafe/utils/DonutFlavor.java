@@ -13,7 +13,7 @@ public enum DonutFlavor {
     MAPLE("Maple");
 
     // String representation of the flavor name
-    private String flavorString;
+    private final String flavorString;
 
     DonutFlavor(String flavorString) {
         this.flavorString = flavorString;
