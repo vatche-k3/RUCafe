@@ -31,6 +31,9 @@ public class OrderingDonutsController {
     @FXML private Spinner<Integer> quantitySpinner;
     @FXML private Button addDonutSelectionToCartButton;
     @FXML private ListView<Donut> donutCartListView;
+    @FXML private TitledPane yeastDonutTitledPane;
+    @FXML private TitledPane cakeDonutTitledPane;
+    @FXML private TitledPane holeDonutTitledPane;
 
     // Constants
     private static final int MIN_DONUT_QUANTITY_SPINNER_VALUE = 1;
@@ -38,7 +41,7 @@ public class OrderingDonutsController {
     private static final int DEFAULT_DONUT_QUANTITY_SPINNER_VALUE = MIN_DONUT_QUANTITY_SPINNER_VALUE;
 
     // All the donuts in our cart
-    SimpleListProperty<Donut> donutsInCart;
+    ArrayList<Donut> donutsInCart;
     // Currently selected properties
     SimpleObjectProperty<DonutType> currentlySelectedType;
     SimpleObjectProperty<DonutFlavor> currentlySelectedFlavor;
@@ -48,8 +51,7 @@ public class OrderingDonutsController {
      */
     @FXML
     protected void initialize() {
-        // TODO initialize / do any preprocessing that is necessary
-        donutsInCart = new SimpleListProperty<>();
+        donutsInCart = new ArrayList<>();
         currentlySelectedType = new SimpleObjectProperty<>();
         currentlySelectedFlavor = new SimpleObjectProperty<>();
 
@@ -108,6 +110,23 @@ public class OrderingDonutsController {
                 this.currentlySelectedFlavor.isNotNull()
             ).not()
         );
+
+    }
+
+    /**
+     * Unselect all lists, and collapse all list views. Called upon a successful add or remove to the cart.
+     */
+    void clearSelections() {
+        // Collapse list views
+        yeastDonutTitledPane.setExpanded(false);
+        cakeDonutTitledPane.setExpanded(false);
+        holeDonutTitledPane.setExpanded(false);
+
+        // Unselect all items from list views
+        yeastDonutListView.getSelectionModel().clearSelection();
+        cakeDonutListView.getSelectionModel().clearSelection();
+        holeDonutListView.getSelectionModel().clearSelection();
+        donutCartListView.getSelectionModel().clearSelection();
     }
 
     /**
@@ -121,6 +140,24 @@ public class OrderingDonutsController {
             this.currentlySelectedFlavor.getValue(),
             this.quantitySpinner.getValue()
         );
-        this.donutsInCart.add(newDonut);
+        // We need to defragment donuts that are of the same type and flavor
+        Donut matchingDonut = null;
+        for(Donut donut : this.donutsInCart) {
+            if(donut.equals(newDonut)) {
+                matchingDonut = donut;
+                break;
+            }
+        }
+
+        // If there is a matching donut, just update its quantity instead. Otherwise, add it to the cart
+        if(matchingDonut == null) {
+            this.donutsInCart.add(newDonut);
+        } else {
+            matchingDonut.updateQuantity(matchingDonut.getQuantity() + newDonut.getQuantity());
+        }
+
+        // Update UI
+        donutCartListView.setItems(FXCollections.observableArrayList(this.donutsInCart));
+        clearSelections();
     }
 }

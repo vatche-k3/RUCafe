@@ -12,8 +12,8 @@ import cafe.utils.DonutType;
 public class Donut extends MenuItem {
 
     // Private members
-    private DonutType type;
-    private DonutFlavor flavor;
+    private final DonutType type;
+    private final DonutFlavor flavor;
     private int quantity;
 
     /**
@@ -55,6 +55,20 @@ public class Donut extends MenuItem {
      */
     public void updateQuantity(int newQuantity) {
         this.quantity = newQuantity;
+    }
+
+    /**
+     * Compare 2 donuts against eachother based on type and flavor
+     * @param obj Donut to compare against
+     * @return whether or not the donuts have the same type and flavor
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Donut) {
+            Donut objAsDonut = (Donut)obj;
+            return objAsDonut.getType() == this.getType() && objAsDonut.getFlavor() == this.getFlavor();
+        }
+        return false;
     }
 
     /**
