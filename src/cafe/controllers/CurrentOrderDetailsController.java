@@ -2,13 +2,16 @@ package cafe.controllers;
 
 import cafe.models.Order;
 import cafe.models.MenuItem;
+import cafe.models.StoreOrders;
 import cafe.utils.Constants;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Controller for CurrentOrderDetails FXML View
@@ -60,6 +63,25 @@ public class CurrentOrderDetailsController {
         // Update UI and Recompute price
         updateUI();
         recomputePrice();
+    }
+
+    /**
+     * Place the order, updating StoreOrders. Called by JavaFX whenever PlaceOrder button is pressed.
+     */
+    @FXML
+    void placeOrder() {
+        // finalize current store order, which adds it to store orders
+        currentOrder.finalizeOrder();
+
+        // Show alert
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(Constants.SUCCESSFULLY_PLACED_ORDER_MSG);
+        alert.show();
+
+        // Close modal
+        Stage stage = (Stage) this.placeOrderButton.getScene().getWindow();
+        stage.close();
+
     }
 
     /**

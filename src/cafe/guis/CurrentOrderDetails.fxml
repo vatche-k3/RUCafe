@@ -60,6 +60,6 @@
          </children>
       </Group>
       <Button fx:id="removeSelectedItemButton" layoutX="273.0" layoutY="317.0" mnemonicParsing="false" onAction="#removeItemFromOrder" prefHeight="28.0" prefWidth="158.0" text="Remove Selected Item" />
-      <Button fx:id="placeOrderButton" layoutX="307.0" layoutY="359.0" mnemonicParsing="false" text="Place Order" />
+      <Button fx:id="placeOrderButton" layoutX="307.0" layoutY="359.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" />
    </children>
 </Pane>

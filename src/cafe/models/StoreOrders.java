@@ -24,6 +24,19 @@ public class StoreOrders implements Customizable {
         // Open the file dialog, and write orders
     }
 
+    /**
+     * Get orders list
+     * @return orders list
+     */
+    public ArrayList<Order> getOrders() {
+        return this.orders;
+    }
+
+    /**
+     * Add an Order to the orders list
+     * @param obj Order to be added
+     * @return status of the operation
+     */
     @Override
     public boolean add(Object obj) {
         if(obj instanceof Order) {
@@ -33,8 +46,17 @@ public class StoreOrders implements Customizable {
         return false;
     }
 
+    /**
+     * Remove an Order from the orders list
+     * @param obj object to be removed
+     * @return status of the operation
+     */
     @Override
     public boolean remove(Object obj) {
-        return false;
+       if(obj instanceof Order) {
+           Order objAsOrder = (Order) obj;
+           return this.orders.remove(objAsOrder);
+       }
+       return false;
     }
 }

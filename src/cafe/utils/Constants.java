@@ -21,6 +21,7 @@ public class Constants {
 
     // Alert messages
     public static final String SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG = "Successfully added the item to the order.";
+    public static final String SUCCESSFULLY_PLACED_ORDER_MSG = "Successfully added order to store orders.";
 
     // Donut specific constants
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;
