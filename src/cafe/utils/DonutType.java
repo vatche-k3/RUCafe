@@ -2,6 +2,7 @@ package cafe.utils;
 
 /**
  * Enum for Donut types
+ *
  * @author Reagan McFarland, Vatche Kafafian
  */
 public enum DonutType {

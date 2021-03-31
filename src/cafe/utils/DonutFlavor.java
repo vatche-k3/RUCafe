@@ -2,6 +2,8 @@ package cafe.utils;
 
 /**
  * Enum for Donut flavors
+ *
+ * @author Reagan McFarland, Vatche Kafafian
  */
 public enum DonutFlavor {
     GLAZE("Glaze"),

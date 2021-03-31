@@ -14,13 +14,6 @@ import javafx.stage.Stage;
  * @author Reagan McFarland, Vatche Kafafian
  */
 public class MainMenuController {
-    /**
-     * Initialize the controller. Called by JavaFX behind the scenes
-     */
-    @FXML
-    protected void initialize() {
-        // TODO initialize / do any preprocessing that is necessary
-    }
 
     /**
      * Called whenever "View Current Order Details" button is pressed.

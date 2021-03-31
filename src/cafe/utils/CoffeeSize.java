@@ -2,6 +2,8 @@ package cafe.utils;
 
 /**
  * Enum for Coffee sizes
+ *
+ * @author Reagan McFarland, Vatche Kafafian
  */
 public enum CoffeeSize {
     SHORT(Constants.COFFEE_SIZE_SHORT_PRICE),

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Coffee MenuItem
  *
- * @author Reagan McFarland
+ * @author Reagan McFarland, Vatche Kafafian
  */
 public class Coffee extends MenuItem implements Customizable {
 
