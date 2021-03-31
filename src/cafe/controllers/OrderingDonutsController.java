@@ -31,12 +31,14 @@ public class OrderingDonutsController {
     private static final int MIN_DONUT_QUANTITY_SPINNER_VALUE = 1;
     private static final int MAX_DONUT_QUANTITY_SPINNER_VALUE = 100;
     private static final int DEFAULT_DONUT_QUANTITY_SPINNER_VALUE = MIN_DONUT_QUANTITY_SPINNER_VALUE;
+
     // All the donuts in our cart
     ArrayList<Donut> donutsInCart;
     // Currently selected properties
     SimpleObjectProperty<DonutType> currentlySelectedType;
     SimpleObjectProperty<DonutFlavor> currentlySelectedFlavor;
     SimpleObjectProperty<Donut> currentlySelectedDonutInCart;
+
     // FXML references
     @FXML private ListView<DonutFlavor> yeastDonutListView;
     @FXML private ListView<DonutFlavor> cakeDonutListView;
