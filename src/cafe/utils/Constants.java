@@ -10,6 +10,7 @@ public class Constants {
     public static final String CURRENCY_FORMAT_STRING = "$%,.2f";
     public static final char SPACE_CHARACTER = ' ';
     public static final char ENUM_SPACE_REPLACEMENT_CHARACTER = '_';
+    public static final double SALES_TAX_RATE = 0.06625;
 
     // Window constants
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
