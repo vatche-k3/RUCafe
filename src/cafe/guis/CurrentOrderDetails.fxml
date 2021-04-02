@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="461.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cafe.controllers.CurrentOrderDetailsController">
+<Pane prefHeight="481.0" prefWidth="544.0" stylesheets="@../../styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cafe.controllers.CurrentOrderDetailsController">
    <children>
       <Text layoutX="84.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Order" />
       <Group layoutX="85.0" layoutY="67.0">
@@ -60,6 +60,6 @@
          </children>
       </Group>
       <Button fx:id="removeSelectedItemButton" layoutX="273.0" layoutY="317.0" mnemonicParsing="false" onAction="#removeItemFromOrder" prefHeight="28.0" prefWidth="158.0" text="Remove Selected Item" />
-      <Button fx:id="placeOrderButton" layoutX="307.0" layoutY="359.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" />
+      <Button fx:id="placeOrderButton" layoutX="308.0" layoutY="387.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" />
    </children>
 </Pane>

@@ -22,7 +22,7 @@ public class Constants {
     public static final String ORDERING_COFFEE_WINDOW_TITLE = "New Coffee Order";
     public static final String ORDERING_DONUTS_WINDOW_TITLE = "New Donut Order";
     public static final String ORDERS_PAGE_WINDOW_TITLE = "Past Orders";
-    public static final int WINDOW_WIDTH = 500;
+    public static final int WINDOW_WIDTH = 400;
     public static final int WINDOW_HEIGHT = 500;
 
     // Alert messages
