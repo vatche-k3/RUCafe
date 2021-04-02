@@ -12,6 +12,8 @@ public class Order implements Customizable {
 
     // The items in the current order
     private final ArrayList<MenuItem> itemsInOrder;
+    // If this value is set, the order has been finalized
+    private double finalPrice;
 
     // Singleton setup
     private static Order instance;
@@ -21,6 +23,7 @@ public class Order implements Customizable {
      */
     private Order() {
         itemsInOrder = new ArrayList<>();
+        finalPrice = 0;
     }
 
     /**
@@ -35,10 +38,12 @@ public class Order implements Customizable {
 
     /**
      * Finalize the given order and send it to StoreOrders.
+     * @param finalPrice the final price (including tax) of the order
      * This also sets the instance to null, causing the singleton to create a new instance next time this class is called from outside
      */
-    public void finalizeOrder() {
+    public void finalizeOrder(double finalPrice) {
         // Add to store orders and reset instance
+        this.finalPrice = finalPrice;
         StoreOrders.getInstance().add(this);
         instance = null;
     }
@@ -49,6 +54,14 @@ public class Order implements Customizable {
      */
     public ArrayList<MenuItem> getItemsInOrder() {
         return this.itemsInOrder;
+    }
+
+    /**
+     * Get the final price of an order. This value is only set through finalizeOrder
+     * @return final price of order
+     */
+    public double getFinalPrice() {
+        return this.finalPrice;
     }
 
     /**

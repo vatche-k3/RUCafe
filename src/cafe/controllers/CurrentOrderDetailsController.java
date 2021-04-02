@@ -27,10 +27,12 @@ public class CurrentOrderDetailsController {
     @FXML private TextField salesTaxTextField;
     @FXML private TextField totalTextField;
 
-    private Order currentOrder;
-
     // Currently selected item in cart
     SimpleObjectProperty<MenuItem> currentlySelectedItem;
+    private Order currentOrder;
+    double subTotalPrice;
+    double salesTaxPrice;
+    double totalPrice;
 
     /**
      * Initialize the CurrentOrderDetails Controller. Called behind the scenes by JavaFX
@@ -68,7 +70,7 @@ public class CurrentOrderDetailsController {
     @FXML
     void placeOrder() {
         // finalize current store order, which adds it to store orders
-        currentOrder.finalizeOrder();
+        currentOrder.finalizeOrder(this.totalPrice);
 
         // Show alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -78,7 +80,6 @@ public class CurrentOrderDetailsController {
         // Close modal
         Stage stage = (Stage) this.placeOrderButton.getScene().getWindow();
         stage.close();
-
     }
 
     /**
@@ -96,23 +97,23 @@ public class CurrentOrderDetailsController {
      * Recompute all the prices and update text boxes
      */
     private void recomputePrice() {
-        // calc subtotal
-        double subTotal = 0;
+        // reset subtotal and recalc
+        subTotalPrice = 0;
         for(MenuItem menuItem : this.currentOrder.getItemsInOrder()) {
-            subTotal += menuItem.itemPrice();
+            subTotalPrice += menuItem.itemPrice();
         }
         // Update subtotal formatted as currency
-        this.subTotalTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, subTotal));
+        this.subTotalTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, subTotalPrice));
 
-        // calc sales tax
-        double salesTax = subTotal * Constants.SALES_TAX_RATE;
+        // reset sales tax and recalc
+        salesTaxPrice = subTotalPrice * Constants.SALES_TAX_RATE;
         // Update sales tax formatted as currency
-        this.salesTaxTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, salesTax));
+        this.salesTaxTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, salesTaxPrice));
 
-        // Calc total
-        double total = subTotal + salesTax;
+        // reset total price and recalc
+        totalPrice = subTotalPrice + salesTaxPrice;
         // Update total formatted as currency
-        this.totalTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, total));
+        this.totalTextField.setText(String.format(Constants.CURRENCY_FORMAT_STRING, totalPrice));
     }
 
 }
