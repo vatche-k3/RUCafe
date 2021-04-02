@@ -142,7 +142,7 @@ public class Coffee extends MenuItem implements Customizable {
         // Append CoffeeSize
         ret += this.size + Constants.COFFEE_STRING_DELIMITER;
         // Append addins
-        ret += "[" + this.addins.toString() + "]";
+        ret += this.addins.toString();
         return ret;
     }
 }

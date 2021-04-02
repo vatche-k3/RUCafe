@@ -43,6 +43,18 @@ public class StoreOrders implements Customizable {
     }
 
     /**
+     * Reset the order Ids of the orders. We need this because when you delete an order, the Ids are no longer
+     * mapped to the index correctly, and you end up with ID gaps that don't make much sense for the user.
+     */
+    public void resetOrderIds() {
+        // Reset next order id
+        Order.NEXT_ORDER_ID = 0;
+        for(Order order : this.orders) {
+            order.setId(Order.NEXT_ORDER_ID++);
+        }
+    }
+
+    /**
      * Get orders list
      * @return orders list
      */

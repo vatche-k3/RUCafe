@@ -11,6 +11,11 @@ public class Constants {
     public static final char ENUM_SPACE_REPLACEMENT_CHARACTER = '_';
     public static final double SALES_TAX_RATE = 0.06625;
 
+    // Order constants
+    public static final String ORDER_TREE_ROOT_NODE_STRING= "Orders";
+    public static final String ORDER_STRING_DELIMITER = " - ";
+    public static final String ORDER_TOTAL_PRICE_PREFIX_STR = "Total Price = ";
+
     // Window constants
     public static final String MAIN_MENU_WINDOW_TITLE = "Main Menu";
     public static final String CURRENT_ORDER_DETAILS_WINDOW_TITLE = "Current Order Details";
@@ -23,6 +28,7 @@ public class Constants {
     // Alert messages
     public static final String SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG = "Successfully added the item to the order.";
     public static final String SUCCESSFULLY_PLACED_ORDER_MSG = "Successfully added order to store orders.";
+    public static final String CANCELLED_ORDER_MSG = "Successfully cancelled order.";
 
     // Donut specific constants
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;

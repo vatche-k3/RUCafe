@@ -1,5 +1,7 @@
 package cafe.models;
 
+import cafe.utils.Constants;
+
 import java.util.ArrayList;
 
 /**
@@ -10,6 +12,11 @@ import java.util.ArrayList;
  */
 public class Order implements Customizable {
 
+    // Tracks the next order id
+    public static int NEXT_ORDER_ID = 0;
+
+    // Id of the order
+    private int id;
     // The items in the current order
     private final ArrayList<MenuItem> itemsInOrder;
     // If this value is set, the order has been finalized
@@ -24,7 +31,17 @@ public class Order implements Customizable {
     private Order() {
         itemsInOrder = new ArrayList<>();
         finalPrice = 0;
+        id = Order.NEXT_ORDER_ID++;
     }
+
+    /**
+     * Override the ID of an order. Refer to StoreOrders.resetOrderIds() for the reasoning behind why we need this
+     * @param newId newId for the order
+     */
+    public void setId(int newId) {
+        this.id = newId;
+    }
+
 
     /**
      * Retrieve the current order instance. If one does not exist already, it is created.
@@ -95,5 +112,22 @@ public class Order implements Customizable {
         }
         return false;
     }
+
+    /**
+     * Return a string represntation of the order.
+     * Follows the format "(id) - Total Price = (finalPrice)"
+     * @return String representation following the format above
+     */
+    @Override
+    public String toString() {
+        String ret = "";
+        // Add prefix and id
+        ret += this.id + Constants.ORDER_STRING_DELIMITER;
+        // Add total price
+        ret += Constants.ORDER_TOTAL_PRICE_PREFIX_STR + String.format(Constants.CURRENCY_FORMAT_STRING, this.finalPrice);
+
+        return ret;
+    }
+
 
 }
