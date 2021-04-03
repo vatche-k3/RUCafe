@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,7 +34,7 @@
                         </CheckBox>
                         <Spinner fx:id="creamQuantity" prefHeight="28.0" prefWidth="86.0" translateX="14.0">
                           <valueFactory>
-                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                           </valueFactory>
                            <HBox.margin>
                               <Insets />
@@ -52,7 +51,7 @@
                         </CheckBox>
                         <Spinner fx:id="milkQuantity" prefHeight="28.0" prefWidth="85.0" translateX="14.0">
                           <valueFactory>
-                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                           </valueFactory>
                         </Spinner>
                      </children>
@@ -66,7 +65,7 @@
                         </CheckBox>
                         <Spinner fx:id="whippedCreamQuantity" prefHeight="28.0" prefWidth="85.0" translateX="10.0">
                            <valueFactory>
-                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                            </valueFactory>
                         </Spinner>
                      </children>
@@ -80,7 +79,7 @@
                         </CheckBox>
                         <Spinner fx:id="syrupQuantity" prefHeight="28.0" prefWidth="85.0" translateX="14.0">
                            <valueFactory>
-                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                            </valueFactory>
                         </Spinner>
                      </children>
@@ -94,7 +93,7 @@
                         </CheckBox>
                         <Spinner fx:id="caramelQuantity" prefHeight="28.0" prefWidth="85.0" translateX="14.0">
                            <valueFactory>
-                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                            </valueFactory>
                         </Spinner>
                      </children>
@@ -132,7 +131,7 @@
                   </Label>
                   <Spinner fx:id="quantitySpinner" prefHeight="27.0" prefWidth="88.0">
                      <valueFactory>
-                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                      </valueFactory>
                   </Spinner>
                </children>

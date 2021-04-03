@@ -89,7 +89,7 @@
                   </Label>
                   <Spinner fx:id="quantitySpinner" prefHeight="27.0" prefWidth="62.0">
                       <valueFactory>
-                          <SpinnerValueFactory.IntegerSpinnerValueFactory max="5" min="1" />
+                          <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                       </valueFactory>
                      <VBox.margin>
                         <Insets bottom="15.0" />

@@ -23,7 +23,7 @@ public class OrderingDonutsController {
 
     // Constants
     private static final int MIN_DONUT_QUANTITY_SPINNER_VALUE = 1;
-    private static final int MAX_DONUT_QUANTITY_SPINNER_VALUE = 100;
+    private static final int MAX_DONUT_QUANTITY_SPINNER_VALUE = 100000;
     private static final int DEFAULT_DONUT_QUANTITY_SPINNER_VALUE = MIN_DONUT_QUANTITY_SPINNER_VALUE;
 
     // All the donuts in our cart
