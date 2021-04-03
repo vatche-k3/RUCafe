@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"cafe"},{"l":"cafe.controllers"},{"l":"cafe.models"},{"l":"cafe.utils"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"cafe"},{"l":"cafe.controllers"},{"l":"cafe.models"},{"l":"cafe.utils"}];updateSearchResults();

@@ -1,8 +1,5 @@
 package cafe;
 
-import cafe.models.Coffee;
-import cafe.models.Order;
-import cafe.models.StoreOrders;
 import cafe.utils.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
+/**
+ * Entry point for the entire JavaFX Application.
+ * @author Reagan McFarland, Vatche Kafafian
+ */
 public class Main extends Application {
 
     /**
