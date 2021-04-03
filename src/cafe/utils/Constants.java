@@ -1,5 +1,7 @@
 package cafe.utils;
 
+import javafx.stage.FileChooser.ExtensionFilter;
+
 /**
  * Global Constants to be used throughout the Project
  *
@@ -10,6 +12,7 @@ public class Constants {
     public static final char SPACE_CHARACTER = ' ';
     public static final char ENUM_SPACE_REPLACEMENT_CHARACTER = '_';
     public static final double SALES_TAX_RATE = 0.06625;
+    public static final String FILE_OUTPUT_MENU_ITEM_PREFIX = "\t - ";
 
     // Order constants
     public static final String ORDER_TREE_ROOT_NODE_STRING= "Orders";
@@ -25,10 +28,19 @@ public class Constants {
     public static final int WINDOW_WIDTH = 400;
     public static final int WINDOW_HEIGHT = 500;
 
+    // File chooser constant
+    public static final String FILE_CHOOSER_EXPORT_TITLE = "Open Target File for Export";
+    public static final ExtensionFilter TEXT_FILES_EXTENSION_FILTER = new ExtensionFilter("Text Files", "*.txt");
+    public static final ExtensionFilter ALL_FILES_EXTENSION_FILTER = new ExtensionFilter("All Files", "*.*");
+
     // Alert messages
     public static final String SUCCESSFULLY_ADDED_ITEM_TO_ORDER_MSG = "Successfully added the item to the order.";
     public static final String SUCCESSFULLY_PLACED_ORDER_MSG = "Successfully added order to store orders.";
     public static final String CANCELLED_ORDER_MSG = "Successfully cancelled order.";
+    public static final String NO_FILE_SELECTED_MSG = "No file selected. Please try again.";
+    public static final String FAILED_TO_CREATE_FILE_MSG = "Failed to create new file. Please try again.";
+    public static final String FAILED_TO_WRITE_FILE_MSG = "Failed to write to the file. Please try again";
+    public static final String SUCCESSFULLY_EXPORTED_STORE_ORDERS_MSG = "Successfully exported store orders to file.";
 
     // Donut specific constants
     public static final double DONUT_TYPE_YEAST_PRICE = 1.39;

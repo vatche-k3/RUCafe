@@ -17,7 +17,7 @@
       </Group>
       <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Store Orders page" />
       <Group layoutX="354.0" layoutY="100.0" />
-      <Button layoutX="158.0" layoutY="330.0" mnemonicParsing="false" text="Save/Export Order" />
+      <Button layoutX="158.0" layoutY="330.0" mnemonicParsing="false" onAction="#exportOrdersToFile" text="Save/Export Order" />
       <Button fx:id="removeSelectedOrderButton" layoutX="302.0" layoutY="330.0" mnemonicParsing="false" onAction="#removeSelectedOrderHandler" text="Cancel Selected Order" />
    </children>
 </Pane>

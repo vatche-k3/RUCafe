@@ -10,7 +10,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -100,6 +106,78 @@ public class OrdersPageController {
         // Update tree view to new root tree item
         rootTreeItem.setExpanded(true);
         this.ordersTreeView.setRoot(rootTreeItem);
+    }
 
+    /**
+     * Export orders to file. Triggered by JavaFX whenever Save/Export Order Button is pressed.
+     *
+     * The format for the output of the file is almost identical to the format of the TreeView:
+     *
+     * (id) - Total Price = (cost)
+     *      (Menu Item)
+     *      (Menu Item)
+     *      ....
+     * (id) - Total Price = (cost)
+     *      (Menu Item)
+     *      (Menu Item)
+     *      ...
+     * ...
+     */
+    @FXML
+    void exportOrdersToFile() {
+        // Open file dialog
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(Constants.FILE_CHOOSER_EXPORT_TITLE);
+        fileChooser.getExtensionFilters().addAll(Constants.TEXT_FILES_EXTENSION_FILTER, Constants.ALL_FILES_EXTENSION_FILTER);
+        Stage fileChooserStage = new Stage();
+        File targetFile = fileChooser.showSaveDialog(fileChooserStage);
+
+        // Check if thet selected anything
+        if(targetFile == null) {
+            Alert noFileSelectedAlert = new Alert(Alert.AlertType.ERROR);
+            noFileSelectedAlert.setContentText(Constants.NO_FILE_SELECTED_MSG);
+            noFileSelectedAlert.show();
+            return;
+        }
+
+        // If the file provdided doesn't exist, create it
+        if(!targetFile.exists()) {
+            try {
+                targetFile.createNewFile();
+            } catch (IOException e) {
+                Alert failedToCreateFileAlert = new Alert(Alert.AlertType.ERROR);
+                failedToCreateFileAlert.setContentText(Constants.FAILED_TO_CREATE_FILE_MSG);
+                failedToCreateFileAlert.show();
+                return;
+            }
+        }
+
+        // We can start writing to the file according to the format above
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(targetFile));
+            String exportString = "";
+            for(Order order : StoreOrders.getInstance().getOrders()) {
+                // Append order header
+                exportString += order.toString() + "\n";
+                // Append each menu item in the order
+                for(MenuItem menuItem : order.getItemsInOrder()) {
+                    exportString += Constants.FILE_OUTPUT_MENU_ITEM_PREFIX + menuItem.toString() + "\n";
+                }
+            }
+
+            // Write to file and close the writer
+            bufferedWriter.write(exportString);
+            bufferedWriter.close();
+
+            // Showm message that we succeeded
+            Alert successfullyExportedAlert = new Alert(Alert.AlertType.INFORMATION);
+            successfullyExportedAlert.setContentText(Constants.SUCCESSFULLY_EXPORTED_STORE_ORDERS_MSG);
+            successfullyExportedAlert.show();
+        } catch (IOException e) {
+            // Show message that we failed
+            Alert failedToWriteFileAlert = new Alert(Alert.AlertType.ERROR);
+            failedToWriteFileAlert.setContentText(Constants.FAILED_TO_WRITE_FILE_MSG);
+            failedToWriteFileAlert.show();
+        }
     }
 }
