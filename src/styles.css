@@ -163,6 +163,11 @@
 	-fx-text-fill: -fx-text-button-colored;
 }
 
+.button:disabled {
+    -fx-opacity: 0.5;
+    -fx-text-fill: #ffffff;
+}
+
 .toggle-button:focused, .button:focused, .button:default:focused {
 	-fx-background-color: -swatch-400;
 }
