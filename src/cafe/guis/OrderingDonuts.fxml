@@ -10,6 +10,7 @@
 <?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -55,7 +56,7 @@
             </Accordion>
          </children>
       </Group>
-      <Group layoutX="202.0" layoutY="324.0">
+      <Group layoutX="217.0" layoutY="327.0">
          <children>
             <HBox layoutX="-31.0">
                <children>
@@ -115,6 +116,9 @@
          </children>
       </Group>
       <Label layoutX="385.0" layoutY="112.0" text="Cart" />
-      <ImageView fitHeight="126.0" fitWidth="200.0" layoutX="385.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="126.0" fitWidth="165.0" layoutX="457.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/donut.jpeg" />
+         </image></ImageView>
    </children>
 </Pane>

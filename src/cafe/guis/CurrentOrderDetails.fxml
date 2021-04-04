@@ -6,14 +6,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <Pane prefHeight="481.0" prefWidth="544.0" stylesheets="@../../styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cafe.controllers.CurrentOrderDetailsController">
    <children>
-      <Text layoutX="84.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Order" />
-      <Group layoutX="85.0" layoutY="67.0">
+      <Text layoutX="180.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Order" />
+      <Group layoutX="179.0" layoutY="68.0">
          <children>
             <ListView fx:id="currentOrderListView" prefHeight="200.0" prefWidth="347.0" />
          </children>
@@ -61,5 +63,10 @@
       </Group>
       <Button fx:id="removeSelectedItemButton" layoutX="273.0" layoutY="317.0" mnemonicParsing="false" onAction="#removeItemFromOrder" prefHeight="28.0" prefWidth="158.0" text="Remove Selected Item" />
       <Button fx:id="placeOrderButton" layoutX="308.0" layoutY="387.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/coffee_and_donuts.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
