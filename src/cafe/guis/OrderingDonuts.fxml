@@ -118,7 +118,7 @@
       <Label layoutX="385.0" layoutY="112.0" text="Cart" />
       <ImageView fitHeight="126.0" fitWidth="165.0" layoutX="457.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../utils/donut.jpeg" />
+            <Image url="@../assets/donut.jpeg" />
          </image></ImageView>
    </children>
 </Pane>

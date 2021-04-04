@@ -23,12 +23,12 @@
       <Button fx:id="removeSelectedOrderButton" layoutX="302.0" layoutY="330.0" mnemonicParsing="false" onAction="#removeSelectedOrderHandler" text="Cancel Selected Order" />
       <ImageView fitHeight="82.0" fitWidth="287.0" layoutX="489.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../utils/assorted_coffee_and_donuts.jpeg" />
+            <Image url="@../assets/assorted_coffee_and_donuts.jpeg" />
          </image>
       </ImageView>
       <ImageView fitHeight="82.0" fitWidth="287.0" layoutX="37.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../utils/assorted_coffee_and_donuts.jpeg" />
+            <Image url="@../assets/assorted_coffee_and_donuts.jpeg" />
          </image>
       </ImageView>
    </children>

@@ -38,7 +38,7 @@
       </VBox>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../utils/pink_sprinkle_donut_and_coffee.jpeg" />
+            <Image url="@../assets/pink_sprinkle_donut_and_coffee.jpeg" />
          </image>
       </ImageView>
    </children>
