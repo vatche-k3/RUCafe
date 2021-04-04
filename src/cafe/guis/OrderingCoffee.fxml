@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,9 +37,6 @@
                           <valueFactory>
                               <SpinnerValueFactory.IntegerSpinnerValueFactory max="100000" min="1" />
                           </valueFactory>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                         </Spinner>
                      </children>
                   </HBox>
