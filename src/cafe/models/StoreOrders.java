@@ -35,14 +35,6 @@ public class StoreOrders implements Customizable {
     }
 
     /**
-     * Export all orders to a file
-     */
-    public void exportOrdersToFile() {
-        //TODO
-        // Open the file dialog, and write orders
-    }
-
-    /**
      * Reset the order Ids of the orders. We need this because when you delete an order, the Ids are no longer
      * mapped to the index correctly, and you end up with ID gaps that don't make much sense for the user.
      */
@@ -63,8 +55,7 @@ public class StoreOrders implements Customizable {
     }
 
     /**
-     * Add an Order to the orders list
-     * @param obj Order to be added
+     * Add an Order to the orders lis* @param obj Order to be added
      * @return status of the operation
      */
     @Override
